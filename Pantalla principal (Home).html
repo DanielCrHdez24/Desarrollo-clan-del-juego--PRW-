@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Clan del Juego</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#" data-screen="inicio">Inicio</a></li>
+                <li><a href="#" data-screen="publicaciones">Publicaciones</a></li>
+                <li><a href="#" data-screen="crear-publicacion">Añadir Publicación</a></li>
+                <li><a href="#" data-screen="registro">Registrarse</a></li>
+                <li><a href="#" data-screen="login">Iniciar Sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <!-- Inicio -->
+        <section id="inicio" class="screen active">
+            <h1>El arte de jugar - ¡Comparte tu experiencia!</h1>
+            <button onclick="showScreen('publicaciones')">Accede a las publicaciones de otros miembros</button>
+            <p>La web número uno del gamer experto... y del no tanto XD...</p>
+        </section>
+
+        <!-- Ver Publicaciones -->
+        <section id="publicaciones" class="screen">
+            <h1>Publicaciones</h1>
+            <div class="post">
+                <p>Hola a todos! Me gusta mucho jugar Mario aunque para muchos puede parecer algo aburrido...</p>
+                <span>Publicado por: @Jugador_22</span>
+            </div>
+            <div class="post">
+                <p>En GTA Vice City puedes encontrar un chaleco antibalas...</p>
+                <span>Publicado por: @Francisco11</span>
+            </div>
+        </section>
+
+        <!-- Crear Publicación -->
+        <section id="crear-publicacion" class="screen">
+            <h1>Cuéntanos...</h1>
+            <textarea placeholder="Escribe aquí tu publicación..."></textarea>
+            <button>Añadir Publicación</button>
+        </section>
+
+        <!-- Registro -->
+        <section id="registro" class="screen">
+            <h1>¡Bienvenido!</h1>
+            <form>
+                <input type="text" placeholder="Nombre de Usuario" required>
+                <input type="email" placeholder="Tu correo electrónico" required>
+                <input type="password" placeholder="Crea tu contraseña" required>
+                <button>Crear Cuenta</button>
+            </form>
+        </section>
+
+        <!-- Inicio de Sesión -->
+        <section id="login" class="screen">
+            <h1>¡Hola de nuevo!</h1>
+            <form>
+                <input type="text" placeholder="Nombre de Usuario" required>
+                <input type="password" placeholder="Tu contraseña" required>
+                <button>Iniciar Sesión</button>
+            </form>
+        </section>
+    </main>
+</body>
+</html>
