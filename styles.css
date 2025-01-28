@@ -6,7 +6,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f0f0f0;
-    color: #333;
+    color: #0a1af1;
 }
 
 header {
@@ -29,8 +29,13 @@ nav ul li {
 
 nav ul li a {
     color: white;
-    text-decoration: none;
+    text-decoration:none;
     font-weight: bold;
+    text-shadow: -1px -1px 0 black,  
+                 1px -1px 0 black,  
+                 -1px 1px 0 black,  
+                 1px 1px 0 black; 
+    
 }
 
 main {
@@ -47,7 +52,7 @@ main {
 }
 
 h1 {
-    color: red;
+    color: #0a1af1;
     text-align: center;
     margin-bottom: 1rem;
 }
@@ -78,6 +83,7 @@ button:hover {
 .post p {
     font-size: 1.2rem;
     color: #333;
+    font-family: 'Arial'
 }
 
 .post span {
@@ -144,7 +150,7 @@ form input, textarea {
 }
 
 .logo img {
-    max-width: 100%;
+    max-width: 50%;
     height: auto;
     border-radius: 50%;
 }
