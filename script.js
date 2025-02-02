@@ -1,7 +1,11 @@
+// Navegación y estructura del nav del sitio
+
 const links = document.querySelectorAll('nav ul li a');
 const screens = document.querySelectorAll('.screen');
 const nav = document.querySelector('nav ul');
 let currentUser = null;
+
+// Manejo de navegación entre secciones
 
 links.forEach(link => {
     link.addEventListener('click', (e) => {
@@ -21,6 +25,7 @@ function showScreen(screenId) {
 }
 
 // Validación de formulario de registro
+
 document.querySelector('#registro form').addEventListener('submit', function(event) {
     event.preventDefault();
     const username = this.querySelector('input[type="text"]').value.trim();
@@ -46,6 +51,7 @@ document.querySelector('#registro form').addEventListener('submit', function(eve
 });
 
 // Validación de formulario de inicio de sesión
+
 document.querySelector('#login form').addEventListener('submit', function(event) {
     event.preventDefault();
     const username = this.querySelector('input[type="text"]').value.trim();
@@ -67,6 +73,7 @@ document.querySelector('#login form').addEventListener('submit', function(event)
 });
 
 // Validación de creación de publicaciones
+
 document.querySelector('#crear-publicacion button').addEventListener('click', function() {
     const postContent = document.querySelector('#crear-publicacion textarea').value.trim();
     if (postContent.length < 10) {
@@ -78,12 +85,14 @@ document.querySelector('#crear-publicacion button').addEventListener('click', fu
 });
 
 // Función para validar el formato de email
+
 function validateEmail(email) {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return re.test(email);
 }
 
 // Actualizar el menú con el nombre de usuario
+
 function updateUserMenu() {
     if (currentUser) {
         const userGreeting = document.createElement('li');
@@ -103,6 +112,7 @@ function updateUserMenu() {
 }
 
 // Cerrar sesión
+
 function logoutUser() {
     alert('Sesión cerrada');
     currentUser = null;
