@@ -84,7 +84,7 @@ document.querySelector('#crear-publicacion button').addEventListener('click', fu
     document.querySelector('#crear-publicacion textarea').value = '';
 });
 
-// Función para validar el formato de email
+// Función para validar el formato de correo electrónico
 
 function validateEmail(email) {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -96,7 +96,7 @@ function validateEmail(email) {
 function updateUserMenu() {
     if (currentUser) {
         const userGreeting = document.createElement('li');
-        userGreeting.textContent = `Bienvenido Claner ${currentUser}`;
+        userGreeting.textContent = `Bienvenido Claner: ${currentUser}`;
         userGreeting.style.float = 'right';
         nav.appendChild(userGreeting);
 

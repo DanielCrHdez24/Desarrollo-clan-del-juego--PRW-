@@ -1,4 +1,5 @@
-/* General Styles */
+/* CSS del sitio */
+
 @import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
 
 body {
@@ -112,6 +113,7 @@ form input, textarea {
 }
 
 /* Pantallas Azules */
+
 .screen-blue {
     background-color: blue;
     color: white;
@@ -137,6 +139,7 @@ form input, textarea {
 }
 
 /* Logo clan */
+
 .logo {
     position: absolute;
     bottom: 60px; 
