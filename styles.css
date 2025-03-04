@@ -144,7 +144,7 @@ form input, textarea {
     position: absolute;
     bottom: 60px; 
     left: 20px; 
-    width: 300px;
+    width: 150px;
 }
 
 .logo img {
@@ -193,4 +193,38 @@ footer {
 
 footer p {
     margin: 5px 0;
+}
+/*catálogo*/
+.catalogo {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+.producto {
+    text-align: center;
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 200px;
+}
+.producto img {
+    width: 100%;
+    border-radius: 10px;
+}
+.producto h2 {
+    font-size: 18px;
+    margin: 10px 0;
+}
+.producto p {
+    font-size: 14px;
+    color: #555;
+}
+.precio {
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    color: #e74c3c;
 }
