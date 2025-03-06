@@ -26,12 +26,12 @@ function showScreen(screenId) {
 
 // Validación de formulario de registro
 
-document.querySelector('#registro form').addEventListener('submit', function(event) {
+document.querySelector('#registro form').addEventListener('submit', function (event) {
     event.preventDefault();
     const username = this.querySelector('input[type="text"]').value.trim();
     const email = this.querySelector('input[type="email"]').value.trim();
     const password = this.querySelector('input[type="password"]').value.trim();
-    
+
     if (username.length < 3) {
         alert('El nombre de usuario debe tener al menos 3 caracteres.');
         return;
@@ -52,16 +52,16 @@ document.querySelector('#registro form').addEventListener('submit', function(eve
 
 // Validación de formulario de inicio de sesión
 
-document.querySelector('#login form').addEventListener('submit', function(event) {
+document.querySelector('#login form').addEventListener('submit', function (event) {
     event.preventDefault();
     const username = this.querySelector('input[type="text"]').value.trim();
     const password = this.querySelector('input[type="password"]').value.trim();
-    
+
     if (username === '' || password === '') {
         alert('Por favor, completa todos los campos.');
         return;
     }
-    
+
     if (username === 'Administrador_Clan' && password === 'nintendo64*') {
         alert('Inicio de sesión exitoso como Administrador_Clan');
         currentUser = username;
@@ -74,7 +74,7 @@ document.querySelector('#login form').addEventListener('submit', function(event)
 
 // Validación de creación de publicaciones
 
-document.querySelector('#crear-publicacion button').addEventListener('click', function() {
+document.querySelector('#crear-publicacion button').addEventListener('click', function () {
     const postContent = document.querySelector('#crear-publicacion textarea').value.trim();
     if (postContent.length < 10) {
         alert('La publicación debe contener al menos 10 caracteres.');
@@ -118,3 +118,42 @@ function logoutUser() {
     currentUser = null;
     location.reload();
 }
+
+// Cargar publicaciones dinámicamente
+function cargarPublicaciones() {
+    fetch('publicaciones.php')
+        .then(response => response.json())
+        .then(data => {
+            const publicacionesContainer = document.querySelector('#publicaciones');
+            publicacionesContainer.innerHTML = "<h1>Publicaciones</h1>";
+            data.forEach(post => {
+                const div = document.createElement('div');
+                div.classList.add('post');
+                div.innerHTML = `<p>${post.contenido}</p><span>Publicado por: @${post.nombre}</span>`;
+                publicacionesContainer.appendChild(div);
+            });
+        });
+}
+
+document.addEventListener('DOMContentLoaded', cargarPublicaciones);
+
+// Manejar creación de publicaciones
+document.querySelector('#crear-publicacion button').addEventListener('click', function () {
+    const postContent = document.querySelector('#crear-publicacion textarea').value.trim();
+
+    if (postContent.length < 10) {
+        alert('La publicación debe contener al menos 10 caracteres.');
+        return;
+    }
+
+    fetch('publicaciones.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: `contenido=${encodeURIComponent(postContent)}`
+    }).then(response => response.text())
+        .then(msg => {
+            alert(msg);
+            document.querySelector('#crear-publicacion textarea').value = '';
+            cargarPublicaciones();
+        });
+});

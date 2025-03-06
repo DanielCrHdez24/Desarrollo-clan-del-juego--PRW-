@@ -30,13 +30,13 @@ nav ul li {
 
 nav ul li a {
     color: white;
-    text-decoration:none;
+    text-decoration: none;
     font-weight: bold;
-    text-shadow: -1px -1px 0 black,  
-                 1px -1px 0 black,  
-                 -1px 1px 0 black,  
-                 1px 1px 0 black; 
-    
+    text-shadow: -1px -1px 0 black,
+        1px -1px 0 black,
+        -1px 1px 0 black,
+        1px 1px 0 black;
+
 }
 
 main {
@@ -103,7 +103,8 @@ form {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-form input, textarea {
+form input,
+textarea {
     width: calc(100% - 2rem);
     margin: 0.5rem 0;
     padding: 0.5rem;
@@ -142,8 +143,8 @@ form input, textarea {
 
 .logo {
     position: absolute;
-    bottom: 80px; 
-    left: 20px; 
+    bottom: 80px;
+    left: 20px;
     width: 150px;
 }
 
@@ -194,6 +195,7 @@ footer {
 footer p {
     margin: 5px 0;
 }
+
 /*catálogo*/
 .catalogo {
     display: flex;
@@ -202,6 +204,7 @@ footer p {
     flex-wrap: wrap;
     padding: 20px;
 }
+
 .producto {
     text-align: center;
     background: white;
@@ -210,18 +213,22 @@ footer p {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     max-width: 200px;
 }
+
 .producto img {
     width: 100%;
     border-radius: 10px;
 }
+
 .producto h2 {
     font-size: 18px;
     margin: 10px 0;
 }
+
 .producto p {
     font-size: 14px;
     color: #555;
 }
+
 .precio {
     display: block;
     font-size: 16px;
