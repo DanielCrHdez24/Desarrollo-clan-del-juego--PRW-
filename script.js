@@ -1,12 +1,10 @@
-// Navegación y estructura del nav del sitio
-
+// Selección de elementos
 const links = document.querySelectorAll('nav ul li a');
 const screens = document.querySelectorAll('.screen');
 const nav = document.querySelector('nav ul');
-let currentUser = null;
+let currentUser = localStorage.getItem('currentUser') || null;
 
 // Manejo de navegación entre secciones
-
 links.forEach(link => {
     link.addEventListener('click', (e) => {
         e.preventDefault();
@@ -25,7 +23,6 @@ function showScreen(screenId) {
 }
 
 // Validación de formulario de registro
-
 document.querySelector('#registro form').addEventListener('submit', function (event) {
     event.preventDefault();
     const username = this.querySelector('input[type="text"]').value.trim();
@@ -44,14 +41,15 @@ document.querySelector('#registro form').addEventListener('submit', function (ev
         alert('La contraseña debe tener al menos 6 caracteres.');
         return;
     }
+
     alert('Registro exitoso');
     currentUser = username;
+    localStorage.setItem('currentUser', currentUser);
     updateUserMenu();
     this.reset();
 });
 
 // Validación de formulario de inicio de sesión
-
 document.querySelector('#login form').addEventListener('submit', function (event) {
     event.preventDefault();
     const username = this.querySelector('input[type="text"]').value.trim();
@@ -65,6 +63,7 @@ document.querySelector('#login form').addEventListener('submit', function (event
     if (username === 'Administrador_Clan' && password === 'nintendo64*') {
         alert('Inicio de sesión exitoso como Administrador_Clan');
         currentUser = username;
+        localStorage.setItem('currentUser', currentUser);
         updateUserMenu();
     } else {
         alert('Usuario o contraseña incorrectos.');
@@ -72,31 +71,20 @@ document.querySelector('#login form').addEventListener('submit', function (event
     this.reset();
 });
 
-// Validación de creación de publicaciones
-
-document.querySelector('#crear-publicacion button').addEventListener('click', function () {
-    const postContent = document.querySelector('#crear-publicacion textarea').value.trim();
-    if (postContent.length < 10) {
-        alert('La publicación debe contener al menos 10 caracteres.');
-        return;
-    }
-    alert('Publicación añadida exitosamente');
-    document.querySelector('#crear-publicacion textarea').value = '';
-});
-
 // Función para validar el formato de correo electrónico
-
 function validateEmail(email) {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return re.test(email);
 }
 
 // Actualizar el menú con el nombre de usuario
-
 function updateUserMenu() {
+    document.querySelectorAll('.user-info').forEach(el => el.remove());
+
     if (currentUser) {
         const userGreeting = document.createElement('li');
         userGreeting.textContent = `Bienvenido Claner: ${currentUser}`;
+        userGreeting.classList.add('user-info');
         userGreeting.style.float = 'right';
         nav.appendChild(userGreeting);
 
@@ -104,6 +92,7 @@ function updateUserMenu() {
         const logoutLink = document.createElement('a');
         logoutLink.href = '#';
         logoutLink.textContent = 'Cerrar Sesión';
+        logoutLink.classList.add('user-info');
         logoutLink.addEventListener('click', logoutUser);
         logoutButton.appendChild(logoutLink);
         logoutButton.style.float = 'right';
@@ -112,19 +101,21 @@ function updateUserMenu() {
 }
 
 // Cerrar sesión
-
 function logoutUser() {
     alert('Sesión cerrada');
+    localStorage.removeItem('currentUser');
     currentUser = null;
     location.reload();
 }
 
 // Cargar publicaciones dinámicamente
 function cargarPublicaciones() {
+    const publicacionesContainer = document.querySelector('#publicaciones');
+    if (!publicacionesContainer) return;
+
     fetch('publicaciones.php')
         .then(response => response.json())
         .then(data => {
-            const publicacionesContainer = document.querySelector('#publicaciones');
             publicacionesContainer.innerHTML = "<h1>Publicaciones</h1>";
             data.forEach(post => {
                 const div = document.createElement('div');
@@ -132,15 +123,13 @@ function cargarPublicaciones() {
                 div.innerHTML = `<p>${post.contenido}</p><span>Publicado por: @${post.nombre}</span>`;
                 publicacionesContainer.appendChild(div);
             });
-        });
+        })
+        .catch(error => console.error("Error cargando publicaciones:", error));
 }
-
-document.addEventListener('DOMContentLoaded', cargarPublicaciones);
 
 // Manejar creación de publicaciones
 document.querySelector('#crear-publicacion button').addEventListener('click', function () {
     const postContent = document.querySelector('#crear-publicacion textarea').value.trim();
-
     if (postContent.length < 10) {
         alert('La publicación debe contener al menos 10 caracteres.');
         return;
@@ -156,4 +145,12 @@ document.querySelector('#crear-publicacion button').addEventListener('click', fu
             document.querySelector('#crear-publicacion textarea').value = '';
             cargarPublicaciones();
         });
+});
+
+// Verificar usuario en sesión y cargar publicaciones al iniciar
+document.addEventListener('DOMContentLoaded', () => {
+    if (currentUser) {
+        updateUserMenu();
+    }
+    cargarPublicaciones();
 });
