@@ -16,16 +16,16 @@
                 <li><a href="#" data-screen="inicio">Inicio</a></li>
                 <li><a href="#" data-screen="publicaciones">Publicaciones</a></li>
                 <li><a href="#" data-screen="crear-publicacion">Añadir Publicación</a></li>
-                <li><a href="#" data-screen="catalogo-venta">Nuestra merch</a></li>
-                <li><a href="#" data-screen="registro-moderadores">Registrarse como moderador</a></li>
+                <li><a href="#" data-screen="catalogo-venta">Nuestra Merch</a></li>
+                <li><a href="#" data-screen="registro-moderadores">Registrarse como Moderador</a></li>
                 <li><a href="#" data-screen="registro">Registrarse</a></li>
                 <li><a href="#" data-screen="login">Iniciar Sesión</a></li>
             </ul>
         </nav>
     </header>
+
     <main>
         <!-- Inicio -->
-
         <section id="inicio" class="screen active">
             <h1>El arte de jugar - ¡Comparte tu experiencia!</h1>
             <button onclick="showScreen('publicaciones')">Accede a las publicaciones de otros miembros</button>
@@ -33,7 +33,6 @@
         </section>
 
         <!-- Ver Publicaciones -->
-
         <section id="publicaciones" class="screen screen-blue">
             <h1>Publicaciones</h1>
             <div class="post">
@@ -47,31 +46,36 @@
         </section>
 
         <!-- Crear Publicación -->
-
         <section id="crear-publicacion" class="screen screen-blue">
             <h1>Cuéntanos...</h1>
-            <textarea placeholder="Escribe aquí tu publicación..."></textarea>
-            <button>Añadir Publicación</button>
+            <form id="formPublicacion">
+                <textarea id="publicacion_contenido" name="publicacion_contenido"
+                    placeholder="Escribe aquí tu publicación..." required></textarea>
+                <button type="submit">Añadir Publicación</button>
+            </form>
         </section>
-        <!-- Nuestra Merch -->
 
+        <!-- Nuestra Merch -->
         <section id="catalogo-venta" class="screen screen-blue">
             <h1>¡Llévele, barato!</h1>
             <div class="catalogo">
                 <div class="producto">
-                    <img src="https://github.com/DanielCrHdez24/Imagenes_desarrollos/blob/main/MockUps/Playera.png?raw=true" alt="Camiseta personalizada">
+                    <img src="https://github.com/DanielCrHdez24/Imagenes_desarrollos/blob/main/MockUps/Playera%202.png?raw=true"
+                        alt="Camiseta personalizada">
                     <h2>Camiseta personalizada</h2>
                     <p>Diseños únicos y exclusivos en varias tallas.</p>
                     <span class="precio">$169.90</span>
                 </div>
                 <div class="producto">
-                    <img src="https://github.com/DanielCrHdez24/Imagenes_desarrollos/blob/main/MockUps/Taza.png?raw=true" alt="Taza con logo">
+                    <img src="https://github.com/DanielCrHdez24/Imagenes_desarrollos/blob/main/MockUps/Taza%202.png?raw=true"
+                        alt="Taza con logo">
                     <h2>Taza con logo</h2>
                     <p>Cerámica de alta calidad con impresión duradera.</p>
                     <span class="precio">$109.90</span>
                 </div>
                 <div class="producto">
-                    <img src="https://github.com/DanielCrHdez24/Imagenes_desarrollos/blob/main/MockUps/Gorra.png?raw=true" alt="Gorra bordada">
+                    <img src="https://github.com/DanielCrHdez24/Imagenes_desarrollos/blob/main/MockUps/Gorra%202.png?raw=true"
+                        alt="Gorra bordada">
                     <h2>Gorra bordada</h2>
                     <p>Perfecta para cualquier ocasión, ajustable y cómoda.</p>
                     <span class="precio">$149.90</span>
@@ -79,48 +83,48 @@
             </div>
         </section>
 
-        <!--Registro Moderadores-->
-        <section id="registro-moderadores" class="screen">
-            <h1>¡Bienvenido por una sana convivencia!</h1>
-            <form>
-                <input type="text" placeholder="Nombre de moderador" required>
-                <input type="email" placeholder="Tu correo electrónico" required>
-                <input type="password" placeholder="Crea tu contraseña" required>
-                <button>Crear Cuenta</button>
-            </form>
-        </section>
-
-        <!-- Registro -->
-
+        <!-- Registro de Usuarios -->
         <section id="registro" class="screen">
             <h1>¡Bienvenido!</h1>
-            <form>
-                <input type="text" placeholder="Nombre de Usuario" required>
-                <input type="email" placeholder="Tu correo electrónico" required>
-                <input type="password" placeholder="Crea tu contraseña" required>
-                <button>Crear Cuenta</button>
+            <form id="formRegistroUsuario">
+                <input type="text" id="usuario_nombre" name="usuario_nombre" placeholder="Nombre de Usuario" required>
+                <input type="email" id="usuario_email" name="usuario_email" placeholder="Tu correo electrónico"
+                    required>
+                <input type="password" id="usuario_password" name="usuario_password" placeholder="Crea tu contraseña"
+                    required>
+                <button type="submit">Crear Cuenta</button>
             </form>
         </section>
 
-        <!-- Inicio de Sesión -->
+        <!-- Registro de Moderadores -->
+        <section id="registro-moderadores" class="screen">
+            <h1>¡Bienvenido por una sana convivencia!</h1>
+            <form id="formRegistroModerador">
+                <input type="text" id="mod_nombre" name="mod_nombre" placeholder="Nombre de moderador" required>
+                <input type="email" id="mod_email" name="mod_email" placeholder="Tu correo electrónico" required>
+                <input type="password" id="mod_password" name="mod_password" placeholder="Crea tu contraseña" required>
+                <button type="submit">Crear Cuenta</button>
+            </form>
+        </section>
 
+        
+        <!-- Inicio de Sesión -->
         <section id="login" class="screen">
             <h1>¡Hola de nuevo!</h1>
-            <form>
-                <input type="text" placeholder="Nombre de Usuario" required>
-                <input type="password" placeholder="Tu contraseña" required>
-                <button>Iniciar Sesión</button>
+            <form id="formLogin">
+                <input type="text" id="login_usuario" name="login_usuario" placeholder="Nombre de Usuario" required>
+                <input type="password" id="login_password" name="login_password" placeholder="Tu contraseña" required>
+                <button type="submit">Iniciar Sesión</button>
             </form>
         </section>
     </main>
+
     <div class="logo">
         <img src="https://github.com/DanielCrHdez24/Imagenes_desarrollos/blob/main/MockUps/Logo.png?raw=true"
             alt="GitHub Logo">
-        </a>
     </div>
 
     <!-- Píe de Página -->
-
     <footer>
         <p>&copy; 2025 El Clan del Juego. Todos los derechos reservados.</p>
         <p>Síguenos en:
